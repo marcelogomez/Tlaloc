@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  quiz_id: 1
+  n_correct: 1
+  score: 1.5
+  date: 2015-02-20
+
+two:
+  user_id: 1
+  quiz_id: 1
+  n_correct: 1
+  score: 1.5
+  date: 2015-02-20

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tutorial Contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tutorial</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Sequence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tutorial_contents.each do |tutorial_content| %>
+      <tr>
+        <td><%= tutorial_content.tutorial_id %></td>
+        <td><%= tutorial_content.name %></td>
+        <td><%= tutorial_content.image %></td>
+        <td><%= tutorial_content.sequence %></td>
+        <td><%= link_to 'Show', tutorial_content %></td>
+        <td><%= link_to 'Edit', edit_tutorial_content_path(tutorial_content) %></td>
+        <td><%= link_to 'Destroy', tutorial_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tutorial content', new_tutorial_content_path %>

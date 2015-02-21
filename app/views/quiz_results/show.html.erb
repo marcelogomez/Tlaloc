@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @quiz_result.user_id %>
+</p>
+
+<p>
+  <strong>Quiz:</strong>
+  <%= @quiz_result.quiz_id %>
+</p>
+
+<p>
+  <strong>N correct:</strong>
+  <%= @quiz_result.n_correct %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @quiz_result.score %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @quiz_result.date %>
+</p>
+
+<%= link_to 'Edit', edit_quiz_result_path(@quiz_result) %> |
+<%= link_to 'Back', quiz_results_path %>

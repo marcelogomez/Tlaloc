@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tutorial:</strong>
+  <%= @tutorial_content.tutorial_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tutorial_content.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @tutorial_content.image %>
+</p>
+
+<p>
+  <strong>Sequence:</strong>
+  <%= @tutorial_content.sequence %>
+</p>
+
+<%= link_to 'Edit', edit_tutorial_content_path(@tutorial_content) %> |
+<%= link_to 'Back', tutorial_contents_path %>
