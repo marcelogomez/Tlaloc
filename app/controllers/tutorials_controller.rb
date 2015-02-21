@@ -7,8 +7,8 @@ class TutorialsController < ApplicationController
     @tutorials = Tutorial.all
 
     respond_to do |format|
-      format.json { render json: @tutorials.as_json(:include => :tutorial_contents) }
-      format.html { render action: "index" }
+      format.json { render json: @tutorials.as_json(:include => [:tutorial_contents, :category]) }
+      format.html { render action: 'index' }
     end
   end
 
@@ -16,7 +16,7 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1.json
   def show
     respond_to do |format|
-      format.json { render json: @tutorial.as_json(:include => :tutorial_contents) }
+      format.json { render json: @tutorial.as_json(:include => [:tutorial_contents, :category]) }
       format.html { render :show, status: :ok, location: @tutorial }
     end
   end

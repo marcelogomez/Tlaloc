@@ -5,11 +5,20 @@ class TipsController < ApplicationController
   # GET /tips.json
   def index
     @tips = Tip.all
+
+    respond_to do |format|
+      format.json { render json: @tips.as_json(:include => :category) }
+      format.html { render action: 'index' }
+    end
   end
 
   # GET /tips/1
   # GET /tips/1.json
   def show
+    respond_to do |format|
+      format.json { render json: @tip.as_json(:include => :category) }
+      format.html { render :show, status: :ok, location: @tip }
+    end
   end
 
   # GET /tips/new

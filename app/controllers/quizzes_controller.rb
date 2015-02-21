@@ -7,12 +7,13 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
 
     respond_to do |format|
-      format.json { render :json => @quizzes.as_json(:include => {
+      format.json { render :json => @quizzes.as_json(:include => [{
                                                       :questions => {
                                                           :include => :answers
                                                       }
-                                                  }
-                           )
+                                                  },
+                                                      :category
+                                                 ])
       }
       format.html { render action: 'index' }
     end
@@ -22,12 +23,13 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1.json
   def show
     respond_to do |format|
-      format.json { render :json => @quiz.as_json(:include => {
+      format.json { render :json => @quiz.as_json(:include => [{
                                                       :questions => {
                                                           :include => :answers
                                                       }
-                                                    }
-                                                  )
+                                                    },
+                                                      :category
+                                                  ])
       }
       format.html { render :show, status: :ok, location: @quiz }
 
