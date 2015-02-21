@@ -5,11 +5,33 @@ class QuizzesController < ApplicationController
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
+
+    respond_to do |format|
+      format.json { render :json => @quizzes.as_json(:include => {
+                                                      :questions => {
+                                                          :include => :answers
+                                                      }
+                                                  }
+                           )
+      }
+      format.html { render action: 'index' }
+    end
   end
 
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+    respond_to do |format|
+      format.json { render :json => @quiz.as_json(:include => {
+                                                      :questions => {
+                                                          :include => :answers
+                                                      }
+                                                    }
+                                                  )
+      }
+      format.html { render :show, status: :ok, location: @quiz }
+
+    end
   end
 
   # GET /quizzes/new

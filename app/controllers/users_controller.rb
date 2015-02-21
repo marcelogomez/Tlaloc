@@ -5,11 +5,20 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.json { render :json => @users.as_json(:include => :quiz_results) }
+      format.html { render action: 'index' }
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    respond_to do |format|
+      format.json { render :json => @user.as_json(:include => :quiz_results) }
+      format.html { render :show, status: :ok, location: @user }
+    end
   end
 
   # GET /users/new

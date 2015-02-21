@@ -5,11 +5,20 @@ class TutorialsController < ApplicationController
   # GET /tutorials.json
   def index
     @tutorials = Tutorial.all
+
+    respond_to do |format|
+      format.json { render json: @tutorials.as_json(:include => :tutorial_contents) }
+      format.html { render action: "index" }
+    end
   end
 
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
+    respond_to do |format|
+      format.json { render json: @tutorial.as_json(:include => :tutorial_contents) }
+      format.html { render :show, status: :ok, location: @tutorial }
+    end
   end
 
   # GET /tutorials/new

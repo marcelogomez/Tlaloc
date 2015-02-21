@@ -5,11 +5,20 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+
+    respond_to do |format|
+      format.json { render json: @questions.as_json(:include => :answers) }
+      format.html { render action: 'index' }
+    end
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    respond_to do |format|
+      format.json { render json: @question.as_json(:include => :answers) }
+      format.html { render :show, status: :ok, location: @question }
+    end
   end
 
   # GET /questions/new
